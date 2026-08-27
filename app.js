@@ -6,6 +6,14 @@ function updateClock(){
   $('dateLabel').textContent=new Intl.DateTimeFormat('ko-KR',{month:'long',day:'numeric',weekday:'long'}).format(now).toUpperCase();
   $('updatedTime').textContent=now.toLocaleTimeString('ko-KR',{hour12:false});
 }
+function setAlertTimes(){
+  const formatTime=date=>'오늘 '+date.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit',hour12:false});
+  const now=new Date(), climateTime=new Date(now.getTime()-32*60*1000);
+  $('lightAlertTime').textContent=formatTime(now);
+  $('lightAlertTime').dateTime=now.toISOString();
+  $('climateAlertTime').textContent=formatTime(climateTime);
+  $('climateAlertTime').dateTime=climateTime.toISOString();
+}
 function updateSensors(){
   state.temp=Math.max(21,Math.min(29,state.temp+(Math.random()-.48)*.16));
   state.humid=Math.max(35,Math.min(65,state.humid+(Math.random()-.5)*.7));
@@ -31,4 +39,4 @@ $('armButton').onclick=e=>{
   $('securityMessage').textContent=armed?'외출 후 감지된 움직임이 없어요.':'센서 기록과 알림을 일시 중지했어요.';
 };
 $('clearBtn').onclick=()=>{$('alerts').innerHTML='<p style="text-align:center;color:var(--muted);font-size:12px;padding:25px 0 10px">새로운 알림이 없어요.</p>'};
-window.addEventListener('resize',drawChart);updateClock();updateSensors();drawChart();setInterval(updateSensors,3000);
+window.addEventListener('resize',drawChart);setAlertTimes();updateClock();updateSensors();drawChart();setInterval(updateSensors,3000);
