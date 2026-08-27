@@ -1,5 +1,5 @@
 const $ = id => document.getElementById(id);
-const state = { temp: 24.2, humid: 48, light: 312, tempHistory:[23.1,23.4,23.8,24.5,24.7,24.2], humidHistory:[52,51,49,47,46,48] };
+const state = { temp: 24.2, humid: 48, light: 412, lightOn: true, tempHistory:[23.1,23.4,23.8,24.5,24.7,24.2], humidHistory:[52,51,49,47,46,48] };
 
 function updateClock(){
   const now=new Date();
@@ -9,9 +9,9 @@ function updateClock(){
 function updateSensors(){
   state.temp=Math.max(21,Math.min(29,state.temp+(Math.random()-.48)*.16));
   state.humid=Math.max(35,Math.min(65,state.humid+(Math.random()-.5)*.7));
-  state.light=Math.round(Math.max(120,Math.min(700,state.light+(Math.random()-.52)*14)));
+  state.light=Math.round(Math.max(330,Math.min(650,state.light+(Math.random()-.5)*14)));
   $('tempValue').textContent=state.temp.toFixed(1); $('humidValue').textContent=Math.round(state.humid); $('lightValue').textContent=state.light;
-  $('tempBar').style.width=((state.temp-18)/12*100)+'%'; $('humidBar').style.width=state.humid+'%'; $('lightBar').style.width=Math.min(100,state.light/7)+'%'; updateClock();
+  $('tempBar').style.width=((state.temp-18)/12*100)+'%'; $('humidBar').style.width=state.humid+'%'; updateClock();
 }
 function drawChart(){
   const c=$('trendChart'),dpr=window.devicePixelRatio||1,rect=c.getBoundingClientRect(); c.width=rect.width*dpr;c.height=rect.height*dpr;

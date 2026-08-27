@@ -1,0 +1,7 @@
+.status.light-on { color: #986c10; background: #fff1c9; }
+.presence { display: flex; align-items: center; gap: 10px; margin-top: 18px; padding: 11px 12px; border-radius: 12px; background: #fbf8ed; }
+.dark .presence { background: #29291e; }
+.presence-dot { width: 9px; height: 9px; border-radius: 50%; background: #e5aa2e; box-shadow: 0 0 0 5px rgba(229,170,46,.14); }
+.presence > div { display: flex; flex-direction: column; gap: 2px; }
+.presence strong { font-size: 10px; }
+.presence small { font-size: 9px; color: var(--muted); }

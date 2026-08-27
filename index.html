@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="light-detection.css">
 </head>
 <body>
   <div class="app-shell">
@@ -43,10 +44,9 @@
           <div class="bar"><i id="humidBar"></i></div>
         </article>
         <article class="sensor-card light">
-          <div class="card-top"><span class="sensor-icon">☼</span><span class="status warn">조금 어두움</span></div>
-          <p>실내 조도</p><div class="reading"><strong id="lightValue">312</strong><span>lux</span></div>
-          <div class="range"><span>어두움</span><span>생활 조도</span><span>밝음</span></div>
-          <div class="bar"><i id="lightBar"></i></div>
+          <div class="card-top"><span class="sensor-icon">☼</span><span class="status light-on" id="lightStatus">불 켜짐</span></div>
+          <p>거실 조명 상태</p><div class="reading"><strong id="lightValue">412</strong><span>lux</span></div>
+          <div class="presence"><span class="presence-dot"></span><div><strong>재실 가능성 있음</strong><small>방금 조명이 켜졌어요</small></div></div>
         </article>
       </section>
 
@@ -61,14 +61,14 @@
           <div class="panel-head"><div><h2>자동 관리</h2><p>조건에 따라 기기를 제어해요</p></div><label class="switch"><input id="autoToggle" type="checkbox" checked><span></span></label></div>
           <div class="rule"><span class="rule-icon">♨</span><div><strong>환기 알림</strong><p>온도 28°C 이상</p></div><em>사용 중</em></div>
           <div class="rule"><span class="rule-icon">💧</span><div><strong>가습기 알림</strong><p>습도 35% 이하</p></div><em>사용 중</em></div>
-          <div class="rule"><span class="rule-icon">☀</span><div><strong>조명 알림</strong><p>조도 200 lux 이하</p></div><em>사용 중</em></div>
+          <div class="rule"><span class="rule-icon">☀</span><div><strong>출입·조명 감지</strong><p>급격한 조도 변화 시 알림</p></div><em>사용 중</em></div>
         </article>
       </section>
 
       <section class="panel activity-panel">
         <div class="panel-head"><div><h2>최근 알림</h2><p>집의 변화를 알려드려요</p></div><button class="text-btn" id="clearBtn">모두 읽음</button></div>
         <div id="alerts">
-          <div class="activity"><span class="activity-icon sun">☀</span><div><strong>실내가 조금 어두워졌어요</strong><p>조명을 켜면 눈의 피로를 줄일 수 있어요.</p></div><time>방금 전</time></div>
+          <div class="activity"><span class="activity-icon sun">☀</span><div><strong>거실 조명이 켜졌어요</strong><p>급격한 밝기 변화로 누군가 들어온 것으로 추정해요.</p></div><time>방금 전</time></div>
           <div class="activity"><span class="activity-icon check">✓</span><div><strong>온습도가 쾌적 범위에 있어요</strong><p>현재 실내 환경이 안정적으로 유지되고 있어요.</p></div><time>32분 전</time></div>
         </div>
       </section>
