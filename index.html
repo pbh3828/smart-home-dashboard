@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="light-detection.css">
+  <link rel="stylesheet" href="security.css">
 </head>
 <body>
   <div class="app-shell">
@@ -48,6 +49,27 @@
           <p>거실 조명 상태</p><div class="reading"><strong id="lightValue">412</strong><span>lux</span></div>
           <div class="presence"><span class="presence-dot"></span><div><strong>재실 가능성 있음</strong><small>방금 조명이 켜졌어요</small></div></div>
         </article>
+      </section>
+
+      <section class="panel security-panel">
+        <div class="panel-head security-head">
+          <div><p class="security-kicker">AWAY SECURITY</p><h2>외출 보안 감지</h2><p>적외선 움직임과 소리를 함께 확인해요</p></div>
+          <button class="arm-button armed" id="armButton"><span>●</span> 외출 감시 중</button>
+        </div>
+        <div class="security-body">
+          <div class="security-summary">
+            <div class="shield">✓</div>
+            <div><small>현재 보안 상태</small><strong id="securityState">이상 없음</strong><p id="securityMessage">외출 후 감지된 움직임이 없어요.</p></div>
+          </div>
+          <div class="security-sensors">
+            <div class="security-sensor"><span class="security-icon infrared">⌁</span><div><small>적외선 장애물 센서</small><strong id="irState">움직임 없음</strong><p>현관 통과 움직임 감지</p></div><i class="sensor-led"></i></div>
+            <div class="security-sensor"><span class="security-icon sound">◖</span><div><small>고감도 소리 센서</small><strong id="soundState">32 dB · 조용함</strong><p>문소리·충격음 변화 감지</p></div><i class="sensor-led"></i></div>
+          </div>
+        </div>
+        <div class="security-log-head"><strong>감지 기록</strong><span>두 센서가 함께 반응하면 침입 가능성이 높아요</span></div>
+        <div class="security-log" id="securityLog">
+          <span class="log-time">오늘 14:22</span><span class="log-mark verified">!</span><div><strong>현관에서 움직임과 큰 소리 감지</strong><p>적외선 감지 후 2초 이내 78 dB 소리가 확인됐어요.</p></div><em>확인 필요</em>
+        </div>
       </section>
 
       <section class="dashboard-grid">

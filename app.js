@@ -23,5 +23,12 @@ function drawChart(){
 }
 $('themeBtn').onclick=()=>{document.body.classList.toggle('dark');$('themeBtn').textContent=document.body.classList.contains('dark')?'☀':'☾';drawChart()};
 $('autoToggle').onchange=e=>e.target.closest('.control-panel').classList.toggle('disabled',!e.target.checked);
+$('armButton').onclick=e=>{
+  const panel=e.currentTarget.closest('.security-panel'), armed=e.currentTarget.classList.toggle('armed');
+  panel.classList.toggle('disarmed',!armed);
+  e.currentTarget.innerHTML=armed?'<span>●</span> 외출 감시 중':'<span>●</span> 감시 꺼짐';
+  $('securityState').textContent=armed?'이상 없음':'감시 중지';
+  $('securityMessage').textContent=armed?'외출 후 감지된 움직임이 없어요.':'센서 기록과 알림을 일시 중지했어요.';
+};
 $('clearBtn').onclick=()=>{$('alerts').innerHTML='<p style="text-align:center;color:var(--muted);font-size:12px;padding:25px 0 10px">새로운 알림이 없어요.</p>'};
 window.addEventListener('resize',drawChart);updateClock();updateSensors();drawChart();setInterval(updateSensors,3000);
