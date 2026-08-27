@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f7f2">
+  <title>우리집 환경 대시보드</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header>
+      <a class="brand" href="#"><span class="brand-mark">H</span><span>HARU HOME</span></a>
+      <div class="header-actions">
+        <span class="demo-badge"><i></i> 데모 모드</span>
+        <button class="icon-btn" id="themeBtn" aria-label="화면 테마 변경">☾</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="welcome">
+        <div>
+          <p class="eyebrow" id="dateLabel"></p>
+          <h1>안녕하세요.<br><span>오늘도 집은 쾌적해요.</span></h1>
+        </div>
+        <div class="overall"><span class="overall-icon">✓</span><div><small>우리집 상태</small><strong>모두 정상</strong></div></div>
+      </section>
+
+      <section class="sensor-grid" aria-label="실시간 센서 값">
+        <article class="sensor-card temperature">
+          <div class="card-top"><span class="sensor-icon">↗</span><span class="status good">쾌적</span></div>
+          <p>실내 온도</p><div class="reading"><strong id="tempValue">24.2</strong><span>°C</span></div>
+          <div class="range"><span>낮음 18°</span><span>적정 22–26°</span><span>높음 30°</span></div>
+          <div class="bar"><i id="tempBar"></i></div>
+        </article>
+        <article class="sensor-card humidity">
+          <div class="card-top"><span class="sensor-icon">◜</span><span class="status good">적정</span></div>
+          <p>실내 습도</p><div class="reading"><strong id="humidValue">48</strong><span>%</span></div>
+          <div class="range"><span>건조 20%</span><span>적정 40–60%</span><span>습함 80%</span></div>
+          <div class="bar"><i id="humidBar"></i></div>
+        </article>
+        <article class="sensor-card light">
+          <div class="card-top"><span class="sensor-icon">☼</span><span class="status warn">조금 어두움</span></div>
+          <p>실내 조도</p><div class="reading"><strong id="lightValue">312</strong><span>lux</span></div>
+          <div class="range"><span>어두움</span><span>생활 조도</span><span>밝음</span></div>
+          <div class="bar"><i id="lightBar"></i></div>
+        </article>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="panel chart-panel">
+          <div class="panel-head"><div><h2>오늘의 환경 변화</h2><p>최근 12시간 센서 기록</p></div><div class="legend"><span><i class="dot temp-dot"></i>온도</span><span><i class="dot hum-dot"></i>습도</span></div></div>
+          <div class="chart-wrap"><canvas id="trendChart" aria-label="온습도 변화 그래프"></canvas></div>
+          <div class="chart-labels"><span>08시</span><span>10시</span><span>12시</span><span>14시</span><span>16시</span><span>18시</span></div>
+        </article>
+
+        <article class="panel control-panel">
+          <div class="panel-head"><div><h2>자동 관리</h2><p>조건에 따라 기기를 제어해요</p></div><label class="switch"><input id="autoToggle" type="checkbox" checked><span></span></label></div>
+          <div class="rule"><span class="rule-icon">♨</span><div><strong>환기 알림</strong><p>온도 28°C 이상</p></div><em>사용 중</em></div>
+          <div class="rule"><span class="rule-icon">💧</span><div><strong>가습기 알림</strong><p>습도 35% 이하</p></div><em>사용 중</em></div>
+          <div class="rule"><span class="rule-icon">☀</span><div><strong>조명 알림</strong><p>조도 200 lux 이하</p></div><em>사용 중</em></div>
+        </article>
+      </section>
+
+      <section class="panel activity-panel">
+        <div class="panel-head"><div><h2>최근 알림</h2><p>집의 변화를 알려드려요</p></div><button class="text-btn" id="clearBtn">모두 읽음</button></div>
+        <div id="alerts">
+          <div class="activity"><span class="activity-icon sun">☀</span><div><strong>실내가 조금 어두워졌어요</strong><p>조명을 켜면 눈의 피로를 줄일 수 있어요.</p></div><time>방금 전</time></div>
+          <div class="activity"><span class="activity-icon check">✓</span><div><strong>온습도가 쾌적 범위에 있어요</strong><p>현재 실내 환경이 안정적으로 유지되고 있어요.</p></div><time>32분 전</time></div>
+        </div>
+      </section>
+    </main>
+    <footer><span><i></i> 센서 데이터 시뮬레이션 중</span><p>마지막 업데이트 <b id="updatedTime">--:--:--</b></p></footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
